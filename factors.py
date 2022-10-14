@@ -25,13 +25,14 @@ def diviseur2(n):
     return i
 
 def diviseur3(n):
-    nsqrt = int(math.sqrt(n))
-    if n % 2 == 0:
+    _n = n if n >= 0 else -n
+    nsqrt = int(math.sqrt(_n))
+    if _n % 2 == 0:
         return 2
     d = 3
 
     while d <= nsqrt:
-        if n % d == 0:
+        if _n % d == 0:
             return d
         d = d + 2
     return 1
@@ -44,6 +45,7 @@ if len(sys.argv) == 2:
         if not ligne:
             break
         entier = int(ligne)
+        positif = True if entier < 0 else False
 
         p = diviseur3(entier)
         print(f"{entier}={entier // p :d}*{p}")
