@@ -26,15 +26,21 @@ def diviseur2(n):
 
 def diviseur3(n):
     _n = n if n >= 0 else -n
-    nsqrt = int(math.sqrt(_n))
     if _n % 2 == 0:
         return 2
+    nsqrt = int(math.sqrt(_n))
+    if n % nsqrt == 0:
+        return nsqrt
     d = 3
+    d2 = nsqrt if nsqrt % 2 == 1 else nsqrt - 2
 
     while d <= nsqrt:
         if _n % d == 0:
             return d
+        if _n % d2 == 0:
+            return d2
         d = d + 2
+        d2 = d2 - 2
     return 1
 
 if len(sys.argv) == 2:
